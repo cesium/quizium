@@ -18,6 +18,12 @@ defmodule QuiziumWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    live "/questions", QuestionLive.Index, :index
+    live "/questions/new", QuestionLive.Index, :new
+    live "/questions/:id/edit", QuestionLive.Index, :edit
+    live "/questions/:id", QuestionLive.Show, :show
+    live "/questions/:id/show/edit", QuestionLive.Show, :edit
   end
 
   # Other scopes may use custom stacks.

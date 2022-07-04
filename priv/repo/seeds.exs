@@ -9,3 +9,12 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+alias Quizium.Quiz.Question
+alias Quizium.Repo
+
+[
+  %Question{question: "A que temperatura ferve a àgua?"},
+  %Question{question: "Quem é o presidente da republica portuguesa?"}
+]
+|> Enum.each(&Repo.insert!/1)
