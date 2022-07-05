@@ -14,7 +14,12 @@ alias Quizium.Quiz.Question
 alias Quizium.Repo
 
 [
-  %Question{question: "A que temperatura ferve a àgua?"},
-  %Question{question: "Quem é o presidente da republica portuguesa?"}
+  %Question{
+    question: "The minimum RAM requirement for installing Windows XP is",
+    answer_1: "64 MB",
+    answer_2: "32 MB",
+    answer_3: "256 MB",
+    answer_4: "128 MB"
+  }
 ]
 |> Enum.each(&Repo.insert!/1)
