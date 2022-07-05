@@ -20,6 +20,26 @@
     <%= @question.question %>
   </li>
 
+  <li>
+    <strong>Correct Answer:</strong>
+    <%= @question.answer_1 %>
+  </li>
+
+  <li>
+    <strong>Wrong Answer 1:</strong>
+    <%= @question.answer_2 %>
+  </li>
+
+  <li>
+    <strong>Wrong Answer 2:</strong>
+    <%= @question.answer_3 %>
+  </li>
+
+  <li>
+    <strong>Wrong Answer 3:</strong>
+    <%= @question.answer_4 %>
+  </li>
+
 </ul>
 
 <span><%= live_patch "Edit", to: Routes.question_show_path(@socket, :edit, @question), class: "button" %></span> |
