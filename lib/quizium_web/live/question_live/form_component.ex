@@ -1,4 +1,5 @@
 defmodule QuiziumWeb.QuestionLive.FormComponent do
+  @moduledoc false
   use QuiziumWeb, :live_component
 
   alias Quizium.Quiz

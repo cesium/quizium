@@ -1,4 +1,7 @@
 defmodule QuiziumWeb.LiveHelpers do
+  @moduledoc """
+  Utility functions for LiveViews and LiveComponents.
+  """
   import Phoenix.LiveView
   import Phoenix.LiveView.Helpers
 

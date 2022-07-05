@@ -1,4 +1,5 @@
 defmodule QuiziumWeb.QuestionLive.Index do
+  @moduledoc false
   use QuiziumWeb, :live_view
 
   alias Quizium.Quiz

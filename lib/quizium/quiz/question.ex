@@ -1,4 +1,7 @@
 defmodule Quizium.Quiz.Question do
+  @moduledoc """
+  A Question is the unit of a Quiz.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

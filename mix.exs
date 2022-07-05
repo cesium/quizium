@@ -1,16 +1,25 @@
 defmodule Quizium.MixProject do
   use Mix.Project
 
+  @app :quizium
+  @name "Quizium"
+  @version "0.1.0-#{Mix.env()}"
+
   def project do
     [
-      app: :quizium,
-      version: "0.1.0",
-      elixir: "~> 1.12",
+      app: @app,
+      name: @name,
+      version: @version,
+      git_ref: git_revision_hash(),
+      elixir: "~> 1.13",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      deps: deps(),
       aliases: aliases(),
-      deps: deps()
+      preferred_cli_env: [
+        check: :test
+      ]
     ]
   end
 
@@ -33,22 +42,41 @@ defmodule Quizium.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      # web
       {:phoenix, "~> 1.6.10"},
+      {:phoenix_html, "~> 3.0"},
+      {:phoenix_live_view, "~> 0.17.5"},
+      {:plug_cowboy, "~> 2.5"},
+
+      # database
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
       {:ecto_sqlite3, ">= 0.0.0"},
-      {:phoenix_html, "~> 3.0"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.17.5"},
-      {:floki, ">= 0.30.0", only: :test},
-      {:phoenix_live_dashboard, "~> 0.6"},
-      {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
+
+      # mailer
       {:swoosh, "~> 1.3"},
+
+      # i18n
+      {:gettext, "~> 0.18"},
+
+      # monitoring
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
-      {:gettext, "~> 0.18"},
+      {:phoenix_live_dashboard, "~> 0.6"},
+
+      # utilities
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+
+      # development
+      {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+
+      # testing
+      {:floki, ">= 0.30.0", only: :test},
+
+      # tools
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.1", only: [:dev, :test], runtime: false}
     ]
   end
 
@@ -65,7 +93,31 @@ defmodule Quizium.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "ecto.seed"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["esbuild default --minify", "phx.digest"],
+      check: [
+        "clean",
+        "deps.unlock --check-unused",
+        "compile --warnings-as-errors",
+        "format --check-formatted",
+        "deps.unlock --check-unused",
+        "test --warnings-as-errors",
+        "credo --strict --all"
+      ]
     ]
+  end
+
+  defp git_revision_hash do
+    case System.cmd("git", ["rev-parse", "HEAD"]) do
+      {ref, 0} ->
+        ref
+
+      {_, _code} ->
+        ["ref:", ref_path] =
+          File.read!(".git/HEAD")
+          |> String.split()
+
+        File.read!(".git/#{ref_path}")
+    end
+    |> String.replace("\n", "")
   end
 end

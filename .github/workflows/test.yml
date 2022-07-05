@@ -1,0 +1,51 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+    types: [opened, synchronize]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: OTP ${{matrix.otp}} / Elixir ${{matrix.elixir}}
+
+    env:
+      MIX_ENV: test
+
+    strategy:
+      matrix:
+        otp: [25.x]
+        elixir: [1.13.x]
+
+    services:
+      db:
+        image: postgres:14.1
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_USERNAME: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_HOSTNAME: 0.0.0.0
+
+    steps:
+      - name: ☁️ Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 💧 Setup Elixir ${{ matrix.elixir }} (OTP ${{matrix.otp}})
+        uses: ./.github/actions/elixir-setup
+        with:
+          otp-version: ${{ matrix.otp }}
+          elixir-version: ${{ matrix.elixir }}
+          build-flags: --all-warnings --warnings-as-errors
+
+      - name: 📥 Install wkhtmltopdf
+        run: |
+          sudo apt-get install -y xfonts-base xfonts-75dpi
+          wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.bionic_amd64.deb
+          sudo dpkg -i wkhtmltox_0.12.6-1.bionic_amd64.deb
+
+      - name: 🔬 Run the tests
+        run: mix test --warnings-as-errors
