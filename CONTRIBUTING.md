@@ -20,8 +20,8 @@ the programming languages' requirements.
 First, clone the repository:
 
 ```
-git clone git@github.com:cesium/yearbook.git
-cd yearbook
+git clone git@github.com:cesium/quizium.git
+cd quizium
 ```
 
 Then, run the setup script to get all dependencies configured. The default
