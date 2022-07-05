@@ -2,14 +2,7 @@
 
 <%= if @live_action in [:new, :edit] do %>
   <.modal return_to={Routes.question_index_path(@socket, :index)}>
-    <.live_component
-      module={QuiziumWeb.QuestionLive.FormComponent}
-      id={@question.id || :new}
-      title={@page_title}
-      action={@live_action}
-      question={@question}
-      return_to={Routes.question_index_path(@socket, :index)}
-    />
+    <.live_component module={QuiziumWeb.QuestionLive.FormComponent} id={@question.id || :new} title={@page_title} action={@live_action} question={@question} return_to={Routes.question_index_path(@socket, :index)} />
   </.modal>
 <% end %>
 
@@ -35,13 +28,13 @@
         <td><%= question.answer_4 %></td>
 
         <td>
-          <span><%= live_redirect "Show", to: Routes.question_show_path(@socket, :show, question) %></span>
-          <span><%= live_patch "Edit", to: Routes.question_index_path(@socket, :edit, question) %></span>
-          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: question.id, data: [confirm: "Are you sure?"] %></span>
+          <span><%= live_redirect("Show", to: Routes.question_show_path(@socket, :show, question)) %></span>
+          <span><%= live_patch("Edit", to: Routes.question_index_path(@socket, :edit, question)) %></span>
+          <span><%= link("Delete", to: "#", phx_click: "delete", phx_value_id: question.id, data: [confirm: "Are you sure?"]) %></span>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<span><%= live_patch "New Question", to: Routes.question_index_path(@socket, :new) %></span>
+<span><%= live_patch("New Question", to: Routes.question_index_path(@socket, :new)) %></span>

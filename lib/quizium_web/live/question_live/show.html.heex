@@ -2,19 +2,11 @@
 
 <%= if @live_action in [:edit] do %>
   <.modal return_to={Routes.question_show_path(@socket, :show, @question)}>
-    <.live_component
-      module={QuiziumWeb.QuestionLive.FormComponent}
-      id={@question.id}
-      title={@page_title}
-      action={@live_action}
-      question={@question}
-      return_to={Routes.question_show_path(@socket, :show, @question)}
-    />
+    <.live_component module={QuiziumWeb.QuestionLive.FormComponent} id={@question.id} title={@page_title} action={@live_action} question={@question} return_to={Routes.question_show_path(@socket, :show, @question)} />
   </.modal>
 <% end %>
 
 <ul>
-
   <li>
     <strong>Question:</strong>
     <%= @question.question %>
@@ -39,8 +31,7 @@
     <strong>Wrong Answer 3:</strong>
     <%= @question.answer_4 %>
   </li>
-
 </ul>
 
-<span><%= live_patch "Edit", to: Routes.question_show_path(@socket, :edit, @question), class: "button" %></span> |
-<span><%= live_redirect "Back", to: Routes.question_index_path(@socket, :index) %></span>
+<span><%= live_patch("Edit", to: Routes.question_show_path(@socket, :edit, @question), class: "button") %></span> |
+<span><%= live_redirect("Back", to: Routes.question_index_path(@socket, :index)) %></span>
