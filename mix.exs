@@ -69,6 +69,7 @@ defmodule Quizium.MixProject do
 
       # development
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.1.6", runtime: Mix.env() == :dev},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
 
       # testing
@@ -93,7 +94,7 @@ defmodule Quizium.MixProject do
       "ecto.setup": ["ecto.create", "ecto.migrate", "ecto.seed"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"],
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
       check: [
         "clean",
         "deps.unlock --check-unused",

@@ -23,7 +23,9 @@ config :quizium, QuiziumWeb.Endpoint,
   secret_key_base: "UgzaMYuSTI/H5Tyma6DZfcuPWQ1X2qyJ6LhZBqpmRh+FMhy6aq/PgvWN/EO2O34g",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    # Start the tailwind watcher by calling Tailwind.install_and_run(:default, args)
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
