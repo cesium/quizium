@@ -12,7 +12,7 @@
 [![CI test][ci-test-status]][ci-test-workflow]
 [![CI style][ci-style-status]][ci-style-workflow]
 
-> ⏳ A Quiz Game Engine for fun and contests
+> ⏳ A Quiz games engine for fun and contests
 
 ## 🤝 Contributing
 
