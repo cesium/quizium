@@ -8,7 +8,13 @@ defmodule Quizium.QuizTest do
 
     import Quizium.QuizFixtures
 
-    @invalid_attrs %{correct_answer: nil, answer_0: nil, answer_1: nil, answer_2: nil, question: nil}
+    @invalid_attrs %{
+      correct_answer: nil,
+      answer_0: nil,
+      answer_1: nil,
+      answer_2: nil,
+      question: nil
+    }
 
     test "list_questions/0 returns all questions" do
       question = question_fixture()

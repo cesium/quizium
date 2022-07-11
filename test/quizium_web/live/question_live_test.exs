@@ -18,7 +18,13 @@ defmodule QuiziumWeb.QuestionLiveTest do
     answer_2: "some updated answer_2",
     question: "some updated question"
   }
-  @invalid_attrs %{correct_answer: nil, answer_0: nil, answer_1: nil, answer_2: nil, question: nil}
+  @invalid_attrs %{
+    correct_answer: nil,
+    answer_0: nil,
+    answer_1: nil,
+    answer_2: nil,
+    question: nil
+  }
 
   defp create_question(_) do
     question = question_fixture()
