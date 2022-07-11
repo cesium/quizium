@@ -22,10 +22,10 @@
     <%= for question <- @questions do %>
       <tr id={"question-#{question.id}"}>
         <td><%= question.question %></td>
+        <td><%= question.correct_answer %></td>
+        <td><%= question.answer_0 %></td>
         <td><%= question.answer_1 %></td>
         <td><%= question.answer_2 %></td>
-        <td><%= question.answer_3 %></td>
-        <td><%= question.answer_4 %></td>
 
         <td>
           <span><%= live_redirect("Show", to: Routes.question_show_path(@socket, :show, question)) %></span>

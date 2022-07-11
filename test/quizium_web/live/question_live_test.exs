@@ -5,20 +5,20 @@ defmodule QuiziumWeb.QuestionLiveTest do
   import Quizium.QuizFixtures
 
   @create_attrs %{
+    correct_answer: "some correct_answer",
+    answer_0: "some answer_0",
     answer_1: "some answer_1",
     answer_2: "some answer_2",
-    answer_3: "some answer_3",
-    answer_4: "some answer_4",
     question: "some question"
   }
   @update_attrs %{
+    correct_answer: "some updated correct_answer",
+    answer_0: "some updated answer_0",
     answer_1: "some updated answer_1",
     answer_2: "some updated answer_2",
-    answer_3: "some updated answer_3",
-    answer_4: "some updated answer_4",
     question: "some updated question"
   }
-  @invalid_attrs %{answer_1: nil, answer_2: nil, answer_3: nil, answer_4: nil, question: nil}
+  @invalid_attrs %{correct_answer: nil, answer_0: nil, answer_1: nil, answer_2: nil, question: nil}
 
   defp create_question(_) do
     question = question_fixture()
@@ -32,7 +32,7 @@ defmodule QuiziumWeb.QuestionLiveTest do
       {:ok, _index_live, html} = live(conn, Routes.question_index_path(conn, :index))
 
       assert html =~ "Listing Questions"
-      assert html =~ question.answer_1
+      assert html =~ question.correct_answer
     end
 
     test "saves new question", %{conn: conn} do
@@ -54,7 +54,7 @@ defmodule QuiziumWeb.QuestionLiveTest do
         |> follow_redirect(conn, Routes.question_index_path(conn, :index))
 
       assert html =~ "Question created successfully"
-      assert html =~ "some answer_1"
+      assert html =~ "some correct_answer"
     end
 
     test "updates question in listing", %{conn: conn, question: question} do
@@ -76,7 +76,7 @@ defmodule QuiziumWeb.QuestionLiveTest do
         |> follow_redirect(conn, Routes.question_index_path(conn, :index))
 
       assert html =~ "Question updated successfully"
-      assert html =~ "some updated answer_1"
+      assert html =~ "some updated correct_answer"
     end
 
     test "deletes question in listing", %{conn: conn, question: question} do
@@ -94,7 +94,7 @@ defmodule QuiziumWeb.QuestionLiveTest do
       {:ok, _show_live, html} = live(conn, Routes.question_show_path(conn, :show, question))
 
       assert html =~ "Show Question"
-      assert html =~ question.answer_1
+      assert html =~ question.correct_answer
     end
 
     test "updates question within modal", %{conn: conn, question: question} do
@@ -116,7 +116,7 @@ defmodule QuiziumWeb.QuestionLiveTest do
         |> follow_redirect(conn, Routes.question_show_path(conn, :show, question))
 
       assert html =~ "Question updated successfully"
-      assert html =~ "some updated answer_1"
+      assert html =~ "some updated correct_answer"
     end
   end
 end

@@ -11,10 +11,10 @@ defmodule Quizium.QuizFixtures do
     {:ok, question} =
       attrs
       |> Enum.into(%{
+        correct_answer: "some correct_answer",
+        answer_0: "some answer_0",
         answer_1: "some answer_1",
         answer_2: "some answer_2",
-        answer_3: "some answer_3",
-        answer_4: "some answer_4",
         question: "some question"
       })
       |> Quizium.Quiz.create_question()

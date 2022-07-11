@@ -9,10 +9,10 @@ defmodule Quizium.Quiz.Question do
     field :question, :string
 
     # the right answer
+    field :correct_answer, :string
+    field :answer_0, :string
     field :answer_1, :string
     field :answer_2, :string
-    field :answer_3, :string
-    field :answer_4, :string
 
     timestamps()
   end
@@ -20,7 +20,7 @@ defmodule Quizium.Quiz.Question do
   @doc false
   def changeset(question, attrs) do
     question
-    |> cast(attrs, [:question, :answer_1, :answer_2, :answer_3, :answer_4])
-    |> validate_required([:question, :answer_1, :answer_2, :answer_3, :answer_4])
+    |> cast(attrs, [:question, :correct_answer, :answer_0, :answer_1, :answer_2])
+    |> validate_required([:question, :correct_answer, :answer_0, :answer_1, :answer_2])
   end
 end

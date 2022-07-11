@@ -6,6 +6,14 @@
     <%= text_input(f, :question) %>
     <%= error_tag(f, :question) %>
 
+    <%= label(f, :correct_answer) %>
+    <%= text_input(f, :correct_answer) %>
+    <%= error_tag(f, :correct_answer) %>
+
+    <%= label(f, :answer_0) %>
+    <%= text_input(f, :answer_0) %>
+    <%= error_tag(f, :answer_0) %>
+
     <%= label(f, :answer_1) %>
     <%= text_input(f, :answer_1) %>
     <%= error_tag(f, :answer_1) %>
@@ -13,14 +21,6 @@
     <%= label(f, :answer_2) %>
     <%= text_input(f, :answer_2) %>
     <%= error_tag(f, :answer_2) %>
-
-    <%= label(f, :answer_3) %>
-    <%= text_input(f, :answer_3) %>
-    <%= error_tag(f, :answer_3) %>
-
-    <%= label(f, :answer_4) %>
-    <%= text_input(f, :answer_4) %>
-    <%= error_tag(f, :answer_4) %>
 
     <div>
       <%= submit("Save", phx_disable_with: "Saving...") %>
