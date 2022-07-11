@@ -19,6 +19,9 @@ defmodule QuiziumWeb.Router do
 
     get "/", PageController, :index
 
+    live "/dashboard", DashboardLive.Index, :index
+    live "/quiz", QuizLive.Index, :index
+
     live "/questions", QuestionLive.Index, :index
     live "/questions/new", QuestionLive.Index, :new
     live "/questions/:id/edit", QuestionLive.Index, :edit
@@ -41,7 +44,7 @@ defmodule QuiziumWeb.Router do
   if Mix.env() in [:dev, :test] do
     import Phoenix.LiveDashboard.Router
 
-    scope "/" do
+    scope "/sysadmin" do
       pipe_through :browser
 
       live_dashboard "/dashboard", metrics: QuiziumWeb.Telemetry
