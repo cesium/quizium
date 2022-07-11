@@ -4,10 +4,10 @@ defmodule Quizium.Repo.Migrations.CreateQuestions do
   def change do
     create table(:questions) do
       add :question, :string
+      add :correct_answer, :string
+      add :answer_0, :string
       add :answer_1, :string
       add :answer_2, :string
-      add :answer_3, :string
-      add :answer_4, :string
 
       timestamps()
     end

@@ -16,10 +16,10 @@ alias Quizium.Repo
 [
   %Question{
     question: "The minimum RAM requirement for installing Windows XP is",
-    answer_1: "64 MB",
-    answer_2: "32 MB",
-    answer_3: "256 MB",
-    answer_4: "128 MB"
+    correct_answer: "64 MB",
+    answer_0: "32 MB",
+    answer_1: "256 MB",
+    answer_2: "128 MB"
   }
 ]
 |> Enum.each(&Repo.insert!/1)

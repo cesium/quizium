@@ -8,7 +8,13 @@ defmodule Quizium.QuizTest do
 
     import Quizium.QuizFixtures
 
-    @invalid_attrs %{answer_1: nil, answer_2: nil, answer_3: nil, answer_4: nil, question: nil}
+    @invalid_attrs %{
+      correct_answer: nil,
+      answer_0: nil,
+      answer_1: nil,
+      answer_2: nil,
+      question: nil
+    }
 
     test "list_questions/0 returns all questions" do
       question = question_fixture()
@@ -22,18 +28,18 @@ defmodule Quizium.QuizTest do
 
     test "create_question/1 with valid data creates a question" do
       valid_attrs = %{
+        correct_answer: "some correct_answer",
+        answer_0: "some answer_0",
         answer_1: "some answer_1",
         answer_2: "some answer_2",
-        answer_3: "some answer_3",
-        answer_4: "some answer_4",
         question: "some question"
       }
 
       assert {:ok, %Question{} = question} = Quiz.create_question(valid_attrs)
+      assert question.correct_answer == "some correct_answer"
+      assert question.answer_0 == "some answer_0"
       assert question.answer_1 == "some answer_1"
       assert question.answer_2 == "some answer_2"
-      assert question.answer_3 == "some answer_3"
-      assert question.answer_4 == "some answer_4"
       assert question.question == "some question"
     end
 
@@ -45,18 +51,18 @@ defmodule Quizium.QuizTest do
       question = question_fixture()
 
       update_attrs = %{
+        correct_answer: "some updated correct_answer",
+        answer_0: "some updated answer_0",
         answer_1: "some updated answer_1",
         answer_2: "some updated answer_2",
-        answer_3: "some updated answer_3",
-        answer_4: "some updated answer_4",
         question: "some updated question"
       }
 
       assert {:ok, %Question{} = question} = Quiz.update_question(question, update_attrs)
+      assert question.correct_answer == "some updated correct_answer"
+      assert question.answer_0 == "some updated answer_0"
       assert question.answer_1 == "some updated answer_1"
       assert question.answer_2 == "some updated answer_2"
-      assert question.answer_3 == "some updated answer_3"
-      assert question.answer_4 == "some updated answer_4"
       assert question.question == "some updated question"
     end
 
