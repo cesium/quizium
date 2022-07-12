@@ -1,0 +1,12 @@
+<%= if @question do %>
+  <div class="text-center">
+    <h1 class="text-7xl"><%= @question.question %></h1>
+    <div class="mt-6 grid grid-cols-2 gap-8">
+      <%= for answer <- @answers do %>
+        <button class="text-5xl"><%= answer %></button>
+      <% end %>
+    </div>
+  </div>
+<% else %>
+  <p>Just keep wating...</p>
+<% end %>
