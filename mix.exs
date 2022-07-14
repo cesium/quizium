@@ -95,6 +95,7 @@ defmodule Quizium.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.deploy": ["tailwind default --minify", "esbuild default --minify", "phx.digest"],
+      lint: ["credo --strict --all"],
       check: [
         "clean",
         "deps.unlock --check-unused",
@@ -102,7 +103,7 @@ defmodule Quizium.MixProject do
         "format --check-formatted",
         "deps.unlock --check-unused",
         "test --warnings-as-errors",
-        "credo --strict --all"
+        "lint"
       ]
     ]
   end
