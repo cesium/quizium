@@ -14,16 +14,10 @@
     <header>
       <section class="container">
         <nav>
-          <ul>
-            <li><a href="https://hexdocs.pm/phoenix/overview.html">Get Started</a></li>
-            <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
-              <li><%= link("LiveDashboard", to: Routes.live_dashboard_path(@conn, :home)) %></li>
-            <% end %>
-          </ul>
           <%= render("_user_menu.html", assigns) %>
         </nav>
-        <a href="https://phoenixframework.org/" class="phx-logo">
-          <img src={Routes.static_path(@conn, "/images/phoenix.png")} alt="Phoenix Framework Logo" />
+        <a href="https://cesium.di.uminho.pt/" class="phx-logo">
+          <img src="https://raw.githubusercontent.com/cesium/quizium/10a5b69e286e92b8c684d78f6323890561346a86/.github/brand/cesium-ORANGE.svg" alt="Cesium" class="cesium max-h-32" />
         </a>
       </section>
     </header>
