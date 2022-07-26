@@ -1,49 +1,59 @@
-<section class="phx-hero">
-  <h1><%= gettext("Welcome to %{name}!", name: "Phoenix") %></h1>
-  <p>Peace of mind from prototype to production</p>
-</section>
-
-<section class="row">
-  <article class="column">
-    <h2>Pages</h2>
-    <ul>
-      <li>
-        <a href={Routes.question_index_path(@conn, :index)}>Questions</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.6/CHANGELOG.md">v1.6 Changelog</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://web.libera.chat/#elixir">#elixir on Libera Chat (IRC)</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-      <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
-      </li>
-      <li>
-        <a href="https://discord.gg/elixir">Elixir on Discord</a>
-      </li>
-    </ul>
-  </article>
-</section>
+<!DOCTYPE html>
+<html>
+  <section class="phx-hero">
+    <img src="https://avatars.githubusercontent.com/u/7284022?s=70&v=4" class="center" />
+    <h1><%= gettext("Welcome to %{name}!", name: "Quizium") %></h1>
+    <button class="getStarted">
+      <li><%= link("Get Started", to: Routes.user_session_path(@conn, :new)) %></li>
+    </button>
+  </section>
+  <head>
+    <style>
+      .body {
+        background: linear-gradient(to bottom, #E56717, #FF8400, #FFC594);
+      }
+      .center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 30%;
+      }
+      .phx-hero {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 90%;
+      text-align: center;
+      border-bottom: 1px solid #e3e3e3;
+      border-radius: 6px;
+      padding: 2em 2em 2em;
+      margin-bottom: 3rem;
+      font-weight: 100;
+      font-size: 300%;
+      line-height: 10;
+      }
+          .getStarted{
+            background-color: #F97316;
+            color: black;
+            border: none;
+            height: 50px;
+            width: 200px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size : 50%;
+        }
+    </style>
+  </head>
+  <body>
+    <section class="row">
+      <article class="column">
+        <h2>Pages</h2>
+        <ul>
+          <li>
+            <a href={Routes.question_index_path(@conn, :index)}>Questions</a>
+          </li>
+        </ul>
+      </article>
+    </section>
+  </body>
+</html>
