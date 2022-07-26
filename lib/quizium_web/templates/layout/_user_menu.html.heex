@@ -1,0 +1,64 @@
+<ul>
+  <%= if @current_user do %>
+    <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+      <html>
+        <head>
+          <style>
+            .button {
+              background-color: #F97316;
+              border: none;
+              color: white;
+              padding: 0px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              cursor: pointer;
+            }
+            .cesium {
+              max-width: 40%;
+            }
+          </style>
+        </head>
+        <body>
+          <button class="button">
+            <li><%= link("Settings", to: Routes.user_settings_path(@conn, :edit)) %></li>
+          </button>
+          <button class="button">
+            <li><%= link("Log out", to: Routes.user_session_path(@conn, :delete), method: :delete) %></li>
+          </button>
+        </body>
+      </html>
+    <% end %>
+  <% else %>
+    <%= if function_exported?(Routes, :live_dashboard_path, 2) do %>
+      <html>
+        <head>
+          <style>
+            .button {
+              background-color: #F97316;
+              border: none;
+              color: white;
+              padding: 0px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              cursor: pointer;
+            }
+            .cesium {
+              max-width: 40%;
+            }
+          </style>
+        </head>
+        <body>
+          <button class="button">
+            <li><%= link("Register / Login", to: Routes.user_registration_path(@conn, :new)) %></li>
+          </button>
+        </body>
+      </html>
+    <% end %>
+  <% end %>
+</ul>
