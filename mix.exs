@@ -42,6 +42,7 @@ defmodule Quizium.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:bcrypt_elixir, "~> 3.0"},
       # web
       {:phoenix, "~> 1.6.10"},
       {:phoenix_html, "~> 3.0"},
