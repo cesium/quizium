@@ -3,7 +3,7 @@
     <h1 class="text-7xl"><%= @question.question %></h1>
     <div class="mt-6 grid grid-cols-2 gap-8">
       <%= for answer <- @answers do %>
-        <button class="text-5xl"><%= answer %></button>
+      <a class="text-7xl border border-2 border-orange-500 hover:bg-orange-200 active:bg-orange-400 focus:outline-none focus:ring focus:ring-orange-300 rounded px-8 py-3"><%= answer %></a>
       <% end %>
     </div>
   </div>
