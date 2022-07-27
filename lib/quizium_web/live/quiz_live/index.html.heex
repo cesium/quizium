@@ -3,10 +3,15 @@
     <h1 class="text-7xl"><%= @question.question %></h1>
     <div class="mt-6 grid grid-cols-2 gap-8">
       <%= for answer <- @answers do %>
-        <button class="text-5xl"><%= answer %></button>
+        <button class="button"><%= answer %></button>
       <% end %>
     </div>
   </div>
+  <style>
+    .button{
+      background-color #0000ff
+    }
+  </style>
 <% else %>
   <p>Just keep wating...</p>
 <% end %>

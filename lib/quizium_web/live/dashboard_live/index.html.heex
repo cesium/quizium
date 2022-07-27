@@ -5,6 +5,42 @@
       <button class="text-5xl"><%= answer %></button>
     <% end %>
   </div>
-  <button phx-click="back">Back</button>
-  <button phx-click="next">Next</button>
+  <button phx-click="back" class="button1">Back</button>
+  <button phx-click="next" class="button2">Next</button>
 </div>
+<style>
+  .button1{
+    width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #E56717;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+  }
+  .button2{
+    width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #E56717;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+  }
+</style>
